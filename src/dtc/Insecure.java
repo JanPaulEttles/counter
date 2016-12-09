@@ -6,6 +6,9 @@ package dtc;
  */
 public class Insecure {
 	
+	String username = "username";
+	String password = "password";
+	
 	String nullReference = null;
 	
 	public Insecure() {
@@ -14,4 +17,9 @@ public class Insecure {
 	public String getNullReference() {
 		return nullReference;
 	}
+	
+	public String getPassword() {
+		return password;
+	}
+	
 }

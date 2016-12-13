@@ -1,6 +1,5 @@
 package dtc;
 
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -13,27 +12,56 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+/* 
+ * test naughty
+ * /naughty?payload=string&username=username&password=password
+ *	
+ * test hello world
+ * /naughty?payload=hello 
+ * 
+ */
 public class NaughtyServlet 
 	extends HttpServlet{
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 		throws IOException {
-		doXSS(request, response);
 		
-		try {
-			doSQLi(request, response);
-		} 
-		catch (SQLException e) {
-
-			e.printStackTrace();
+		String payload = request.getParameter("payload");
+		
+		if(payload.equals("hello")) {
+			doHelloWorld(response);			
+		}
+		else {
+			doXSS(request, response);
+			
+			try {
+				doSQLi(request, response);
+			} 
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
+	
+	private static void doHelloWorld(HttpServletResponse response) 
+		throws IOException {
+
+		response.setContentType("application/json");
+		
+		PrintWriter out = response.getWriter();
+		out.println("{ \"response\" : \"world\"}");			
+		out.flush();
+	}	
+
+	
 	private static void doXSS(HttpServletRequest request, HttpServletResponse response) 
 		throws IOException {
-		
+
 		String payload = request.getParameter("payload");
 		PrintWriter out = response.getWriter();
+		
 		out.println("<html>");
 		out.println("<body>");
 		out.println("<h1>Hello Servlet Get</h1>");
@@ -41,7 +69,6 @@ public class NaughtyServlet
 		out.println("</body>");
 		out.println("</html>");
 	}	
-	
 	
 	private static final String DB_DRIVER = "oracle.jdbc.driver.OracleDriver";
 	private static final String DB_CONNECTION = "jdbc:oracle:thin:@localhost:1521:fridj";

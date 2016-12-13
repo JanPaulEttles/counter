@@ -131,6 +131,11 @@ public class CounterTest {
     assertEquals(LOWER_BOUND, actual);
   }
 
+  @Test
+  public void testFail() { 
+    assertEquals(1, 2);
+  }
+
   private Counter setUp() {
     return new Counter(LOWER_BOUND, UPPER_BOUND);
   }

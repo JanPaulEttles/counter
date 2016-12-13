@@ -13,13 +13,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
+/*
+ * in webapps, create a folder /naughty/WEB-INF/classes/dtc/
+ * 
+ * place the NaughtyServlet.java in /naughty/WEB-INF/classes/dtc/
+ * place web.xml in /naughty/WEB-INF/
+ * 
+ * javac NaughtyServlet.java -cp container/lib/servlet.api.jar
+ * 
+ */
+
+
 /* 
  * test naughty
  * /naughty?payload=string&username=username&password=password
  *	
  * test hello world
- * /naughty?payload=hello 
- * 
+ * /naughty?payload=hello  
  */
 public class NaughtyServlet 
 	extends HttpServlet{
@@ -110,5 +120,4 @@ public class NaughtyServlet
 		}
 		return dbConnection;
 	}
-
 }

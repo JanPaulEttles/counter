@@ -120,4 +120,30 @@ public class NaughtyServlet
 		}
 		return dbConnection;
 	}
+	
+	private static final int LOWER_BOUND = 0;
+	private static final int UPPER_BOUND = 1000;
+
+	private static Counter counter = null;
+
+	public static void setUp() {
+		counter = new Counter(LOWER_BOUND, UPPER_BOUND);
+	}
+	
+	public static int next() {
+		return counter.next();		
+	}
+	
+	public static int previous() {
+		return counter.previous();	
+	}
+
+	public static int getCurrent() {
+		return counter.getCurrent();	
+	}
+
+	public static void setCurrent(int current) {
+		counter.setCurrent(current);	
+	}
+	
 }

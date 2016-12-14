@@ -132,9 +132,10 @@ public class NaughtyServletTest {
 	    
 	    assertEquals(LOWER_BOUND, actual);
 	  }
-
+/*
 	  @Test
 	  public void testFail() { 
 	    assertEquals(1, 2);
 	  }
+*/
 }

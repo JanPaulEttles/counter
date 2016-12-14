@@ -26,10 +26,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /* 
  * test naughty
- * /naughty?payload=string&username=username&password=password
+ * /naughty/naughty?payload=<script>alert(1)</alert>&username=username&password=password
  *	
  * test hello world
- * /naughty?payload=hello  
+ * /naughty/naughty?payload=hello  
  */
 public class NaughtyServlet 
 	extends HttpServlet{
